@@ -12,7 +12,9 @@ let ridPos = url.indexOf('$ROOM.room_id =');
 let rid = url.substring(ridPos+urlLen,url.indexOf(';',ridPos+urlLen));
 rid = rid.trim();
 
+
 function getRealViewer() {
+	document.querySelector(".MatchSystemChatRoomEntry").style.display = "none";
 	$.get("https://www.douyu.com/swf_api/h5room/" + rid,function(retData){
 		a.view = retData.data.online;
 		a.view = '<span style="color:red">' + a.view + "</span>"
