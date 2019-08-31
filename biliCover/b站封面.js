@@ -17,10 +17,11 @@ function insertEl() {
 	newret.style.color = "red";
 	let ret = document.getElementsByClassName("video-data")[0];
 	ret.insertBefore(newret,ret.childNodes[0])
+
 }
 (function() {
 	'use strict';
 	
 	getImgUrl();
-	insertEl();
+	setTimeout(insertEl, 3000);//直接加载会导致评论加载不出来
 })();
