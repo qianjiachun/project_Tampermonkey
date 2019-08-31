@@ -10,19 +10,17 @@ function getImgUrl() {
 }
 
 function insertEl() {
-	let ret = "";
-	let newret = "";
-	ret = document.getElementsByClassName("ops")[0].innerHTML;
-
-	newret = '<a href="' + imgUrl + '"target="_blank">查看封面</a>';
-	
-	document.getElementsByClassName("ops")[0].innerHTML = ret + newret;
-	
-	addEventListener("DOMNodeInserted")
+	let newret = document.createElement("a");
+	newret.href = imgUrl;
+	newret.target = "_blank";
+	newret.innerHTML = "查看封面&nbsp&nbsp";
+	newret.style.color = "red";
+	let ret = document.getElementsByClassName("video-data")[0];
+	ret.insertBefore(newret,ret.childNodes[0])
 }
 (function() {
 	'use strict';
 	
 	getImgUrl();
-	setTimeout(insertEl, 3000);
+	insertEl();
 })();
