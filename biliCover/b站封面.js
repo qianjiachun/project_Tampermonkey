@@ -2,7 +2,7 @@ let imgUrl = "";
 function getImgUrl() {
 	let metaTags = document.getElementsByTagName("meta");
 	for (let i = 0; i < metaTags.length; i++) {
-		if (metaTags[i].attributes[1].value == "image") {
+		if (metaTags[i].attributes[1].value == "thumbnailUrl") {
 			imgUrl = metaTags[i].content;
 			
 		}
@@ -23,5 +23,12 @@ function insertEl() {
 	'use strict';
 	
 	getImgUrl();
-	setTimeout(insertEl, 3000);//直接加载会导致评论加载不出来
+
+	let intID = setInterval(() => {
+		if (typeof(document.getElementsByClassName("comment-submit")[0]) != "undefined") {
+			insertEl();
+			clearInterval(intID);
+		}
+	},1000);
+	// setTimeout(insertEl, 3000);//直接加载会导致评论加载不出来
 })();
